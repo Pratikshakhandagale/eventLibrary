@@ -15,6 +15,10 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+//Ankita-added
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+//import { SlickCarouselModule } from '../../../../../node_modules/ngx-slick-carousel';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     NgxIziToastModule, 
     HttpClientModule,
     NgxPaginationModule,
+    SlickCarouselModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -13,7 +13,7 @@ export class EventListComponent implements OnInit {
   @Input() paginateLimit: number = 5;
   @Output() eventDetailData = new EventEmitter();
   @Output() redirectToDetail = new EventEmitter();
-
+  @Input() myEvents: any;
   @Input() redirection: any = 'event';
   constructor(
     private router: Router,
@@ -26,8 +26,6 @@ export class EventListComponent implements OnInit {
   }
 
   /*onEventWrapper(identifier) {
-    alert('hiii2');
-    
     this.router.navigate([this.redirection], {
       queryParams: {
         identifier: identifier,
@@ -35,6 +33,8 @@ export class EventListComponent implements OnInit {
       }
     });
   }*/
+
+  slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};
 
   navToEventDetail(res){
       this.eventDetailData.emit(res);
