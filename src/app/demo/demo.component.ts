@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {EventListService} from '../../../projects/event-library/src/lib/events/services/event-list/event-list.service';
 import { EventCreateService } from '../../../projects/event-library/src/lib/events/services/event-create/event-create.service';
 import { EventDetailService } from './../../../projects/event-library/src/lib/events/services/event-detail/event-detail.service';
+import { ImageSearchService } from './../../../projects/event-library/src/lib/events/services/image-search/image-search.service';
 
 @Component({
   selector: 'app-demo',
@@ -22,7 +23,8 @@ export class DemoComponent implements OnInit {
   constructor(
     private eventListService:EventListService,
     private eventCreateService: EventCreateService,
-    private eventDetailService: EventDetailService
+    private eventDetailService: EventDetailService,
+    private ImageSearchService: ImageSearchService
   ) { }
 
   ngOnInit() {
