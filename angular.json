@@ -38,9 +38,14 @@
                         "styles": [
                             "node_modules/font-awesome/css/font-awesome.css",
                             "src/assets/styles/styles.scss",
-                            "node_modules/izitoast/dist/css/iziToast.min.css"
+                            "projects/event-library/src/lib/assets/styles/style.css",
+                            "node_modules/izitoast/dist/css/iziToast.min.css",
+                            "node_modules/slick-carousel/slick/slick.scss",
+                            "node_modules/slick-carousel/slick/slick-theme.scss"
                         ],
-                        "scripts": ["node_modules/izitoast/dist/js/iziToast.min.js"]
+                        "scripts": ["node_modules/izitoast/dist/js/iziToast.min.js",
+                            "node_modules/jquery/dist/jquery.min.js",
+                            "node_modules/slick-carousel/slick/slick.min.js"]
                     },
                     "configurations": {
                         "production": {
