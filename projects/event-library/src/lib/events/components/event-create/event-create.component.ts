@@ -296,6 +296,9 @@ export class EventCreateComponent implements OnInit {
     return (timeDiff >= 0) ? true : false;
   }
 
-
+  //Asset-library Integration Code - Ankita
+  public showAppIcon = true;
+  public appIconConfig: any;
+  public appIcon: any;
 }
 
