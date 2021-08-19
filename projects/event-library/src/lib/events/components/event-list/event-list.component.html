@@ -1,9 +1,15 @@
 <div class=" sbt-page-content-area">
-    <div class="card-container">
+    <div *ngIf="toSort">
+        <select name="demo" id="#">
+            <option selected="selected" value="one">Sorting Options</option>
+            <option value="two">Option 2</option>
+            <option value="three">Option 3</option>
+            </select>
+    </div>
+    <div class="card-container ng-star-inserted">
         <div class="masonry-grid " *ngIf="list">
             <div class="masonry-item"  *ngFor="let event of list | paginate: { itemsPerPage: paginateLimit, currentPage: p }">
                 <!-- <div class="sb-card" (click)="onEventWrapper(event?.identifier);navToEventDetail(event)" tabindex="0"> -->
-
                 <div class="sb-card" (click)="navToEventDetail(event)" tabindex="0">
                     <div class="sb-card-body">
                         <div class="sb-card-metas">
@@ -38,6 +44,6 @@
                 </div>
             </div>
         </div>
-              <pagination-controls (pageChange)="p = $event"  *ngIf="list"></pagination-controls>        
     </div>
+    <pagination-controls (pageChange)="p = $event"  *ngIf="list"></pagination-controls>        
 </div>
