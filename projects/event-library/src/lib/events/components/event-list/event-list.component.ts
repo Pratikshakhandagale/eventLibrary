@@ -10,10 +10,10 @@ import { TranslateService } from '@ngx-translate/core';
 export class EventListComponent implements OnInit {
 
   @Input() list: any;
-  @Input() paginateLimit: number = 5;
+  @Input() paginateLimit: number = 6;
   @Output() eventDetailData = new EventEmitter();
   @Output() redirectToDetail = new EventEmitter();
-
+  @Input() toSort;
   @Input() redirection: any = 'event';
   constructor(
     private router: Router,
@@ -23,6 +23,7 @@ export class EventListComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("TS+",this.toSort);
   }
 
   /*onEventWrapper(identifier) {
