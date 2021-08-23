@@ -10,6 +10,8 @@ import { SbToastService } from '../../services/iziToast/izitoast.service';
 import { TimezoneCal } from '../../services/timezone/timezone.service';
 import { TranslateService } from '@ngx-translate/core';
 import { UserConfigService } from '../../services/userConfig/user-config.service';
+import { ImageSearchService } from '../../services/image-search/image-search.service';
+import * as _ from 'lodash-es';
 
 @Component({
   selector: 'sb-event-create',
@@ -46,6 +48,26 @@ export class EventCreateComponent implements OnInit {
   offset = this.timezoneCal.getTimeOffset();
   constFormFieldProperties: any;
   flag: boolean = true;
+
+  // Ankita changes
+  public showAppIcon = true;
+  public appIconConfig = {
+      code: "appIcon",
+      dataType: "text",
+      description: "appIcon of the content",
+      editable: true,
+      inputType: "appIcon",
+      label: "Icon",
+      name: "Icon",
+      placeholder: "Icon",
+      renderingHints: {class: "sb-g-col-lg-1 required"},
+      required: true,
+      visible: true
+}
+  public appIcon="";
+  editmode : any;
+  public showImagePicker = true;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private eventCreateService: EventCreateService,
@@ -56,7 +78,8 @@ export class EventCreateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private timezoneCal: TimezoneCal,
     private translate: TranslateService,
-    private userConfigService: UserConfigService) {
+    private userConfigService: UserConfigService,
+    private imageSearchService : ImageSearchService) {
 
   }
 
@@ -69,6 +92,40 @@ export class EventCreateComponent implements OnInit {
     registrationEndDate: [] = this.todayDate,
 
   });
+
+  // Ankita changes
+  ngOnChanges() {
+  this.setAppIconData();
+}
+
+// Ankita changes
+setAppIconData() {
+  const isRootNode = true;
+  
+  //this.appIconConfig = _.find(_.flatten(_.map(this.rootFormConfig, 'fields')), {code: 'appIcon'});
+  // if (!_.isUndefined(this.appIconConfig) && isRootNode === true) {
+  //   this.showAppIcon = true;
+  // } else {
+  //   this.showAppIcon = false;
+  // }
+  // this.appIcon = _.get(this.nodeMetadata, 'data.metadata.appIcon');
+  this.appIcon="";
+  if (this.isReviewMode()) {
+    this.appIconConfig = {...this.appIconConfig , ... {isAppIconEditable: false}};
+  } else {
+    this.appIconConfig = {...this.appIconConfig , ... {isAppIconEditable: true}};
+  }
+  // const ifEditable = this.ifFieldIsEditable('appIcon');
+}
+
+  isReviewMode()
+  {
+    this.imageSearchService.getEditMode().subscribe((data: any) => {
+    this.editmode = data.d.edit;
+    });
+    
+    return  _.includes(['review', 'read', 'sourcingreview' ], this.editmode);
+  }
 
   ngOnInit() {
 
@@ -296,9 +353,11 @@ export class EventCreateComponent implements OnInit {
     return (timeDiff >= 0) ? true : false;
   }
 
-  //Asset-library Integration Code - Ankita
-  public showAppIcon = true;
-  public appIconConfig: any;
-  public appIcon: any;
+  // Ankita
+  appIconDataHandler(event) {
+    console.log(event,"= onclickmethd");
+    this.appIcon = event.url;
+    // this.treeService.updateAppIcon(event.url);
+  }  
 }
 

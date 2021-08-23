@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { EventListComponent } from './components/event-list/event-list.component';
@@ -15,7 +15,10 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { CollectionIconComponent } from './components/collection-icon/collection-icon.component'; // <-- import the module
+import { CollectionIconComponent } from './components/collection-icon/collection-icon.component';
+import { AssetBrowserComponent } from './components/asset-browser/asset-browser.component'; // <-- import the module
+import { SuiModule } from 'ng2-semantic-ui/dist';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { CollectionIconComponent } from './components/collection-icon/collection
     AdvanceEventDetailComponent,
     CoverEventDetailComponent,
     EventFilterComponent,
-    CollectionIconComponent
+    CollectionIconComponent,
+    AssetBrowserComponent
   ],
   imports: [
     CommonModule,
@@ -37,6 +41,8 @@ import { CollectionIconComponent } from './components/collection-icon/collection
     NgxIziToastModule, 
     HttpClientModule,
     NgxPaginationModule,
+    SuiModule,
+    InfiniteScrollModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

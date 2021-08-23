@@ -1,0 +1,51 @@
+import { OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EventDetailService } from '../../services/event-detail/event-detail.service';
+export declare class EventDetailComponent implements OnInit {
+    private activatedRoute;
+    private eventDetailService;
+    labelMessages: {
+        lbl: {
+            type: string;
+            audience: string;
+            eventtype: string;
+            startdate: string;
+            previous: string;
+            next: string;
+            search: string;
+            changefilters: string;
+            reset: string;
+            apply: string;
+            by: string;
+            datetime: string;
+            join: string;
+            online: string;
+            offline: string;
+            pages: string;
+            collaborators: string;
+            dialcode: string;
+            onlineproviderdata: string;
+            provider: string;
+            createnewevent: string;
+            startdatetime: string;
+            enddatetime: string;
+            registrationstartdate: string;
+            registrationenddate: string;
+            save: string;
+            cancel: string;
+            edit: string;
+            retire: string;
+            enroll: string;
+            unenroll: string;
+        };
+    };
+    eventDetailItem: any;
+    userData: any;
+    canUnenroll: boolean;
+    queryParams: any;
+    isNew: boolean;
+    eventCreateService: any;
+    formFieldProperties: any;
+    constructor(activatedRoute: ActivatedRoute, eventDetailService: EventDetailService);
+    ngOnInit(): void;
+}
